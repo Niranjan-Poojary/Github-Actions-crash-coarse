@@ -8,5 +8,5 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
 
-      - name: Run a one-line script
-        run: echo "This is the first workflow."
+      - name: Building Docker image
+        run: docker build -t my-nginx:v1 .
