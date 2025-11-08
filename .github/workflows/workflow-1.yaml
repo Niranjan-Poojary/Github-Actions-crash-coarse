@@ -1,8 +1,11 @@
-name: First Workflow
+name: Manual Workflow
 on: 
-  pull_request:
-    branches:
-      - main
+  workflow_dispatch:
+    inputs:
+      image_tag:
+        description: "docker image tag"
+        required: true
+        default: "latest"
 
       
 
@@ -13,5 +16,8 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
 
+      - name: show selected tag
+        run: echo "Building docker image for ${{ github.event.inputs.image_tag }}"  
+
       - name: Building Docker image
-        run: docker build -t my-nginx:v1 .
+        run: docker build -t my-nginx:${{ github.event.inputs.image_tag }} .
