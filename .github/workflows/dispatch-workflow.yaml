@@ -1,0 +1,16 @@
+name: Manual Workflow
+on: 
+  workflow_dispatch:
+    inputs:
+      image_tag:
+        description: " creating docker image tag"
+        required: true
+        default: latest
+
+      
+
+jobs:
+  trigger-build:
+    uses: ./.github/workflows/workflow-1.yaml
+    with:
+      image_tag: ${{ github.event.inputs.image_tag }}  

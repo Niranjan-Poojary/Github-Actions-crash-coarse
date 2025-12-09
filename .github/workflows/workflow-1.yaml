@@ -1,11 +1,11 @@
 name: Manual Workflow
 on: 
-  workflow_dispatch:
+  workflow_call:
     inputs:
       image_tag:
-        description: " creating docker image tag"
         required: true
         default: "latest"
+        type: string
 
       
 
@@ -13,11 +13,5 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout repository
-        uses: actions/checkout@v4
-
-      - name: show selected tag
-        run: echo "Building docker image for ${{ github.event.inputs.image_tag }}"  
-
       - name: Building Docker image
         run: docker build -t my-nginx:${{ github.event.inputs.image_tag }} .
