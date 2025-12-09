@@ -9,7 +9,7 @@ on:
         default: "v1.0.0"
 
 env:
-  AWS_REGION: ap-south-1
+  AWS_REGION: us-west-1
   ECR_REPO: github_action_demo # your ECR repository name
   IMAGE_NAME: github-action-demo
 
@@ -18,7 +18,7 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout repository
+      - name: Checkout repository 
         uses: actions/checkout@v4
 
       - name: Configure AWS credentials
